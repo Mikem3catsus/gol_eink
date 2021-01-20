@@ -69,7 +69,7 @@ basic.forever(function () {
     for(let x=0;x<width;x++){
         for(let y=0;y<height;y++){
             if(live_array[x][y] == 1){
-                inkybit.setPixel(x,y)
+                inkybit.setPixel(x,y,inkybit.Color.Black)
             }
         }
     }
