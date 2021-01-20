@@ -1,5 +1,5 @@
-let width = 250
-let height = 122
+let width = 250/2
+let height = 122/2
 // Set some values so the typing works
 let live_array = [[0,0],[0,0]]
 let next_array = [[0,0],[0,0]]
@@ -22,6 +22,12 @@ live_array[2][1]=1
 live_array[2][3]=1
 //live_array[3][4]=1
 //live_array[3][3]=1
+
+live_array[11][10] = 1
+live_array[12][11] = 1
+live_array[13][11] = 1
+live_array[13][10] = 1
+live_array[13][9] = 1
 
 basic.forever(function () {
     for(let x=0;x<width;x++){
@@ -69,10 +75,10 @@ basic.forever(function () {
     for(let x=0;x<width;x++){
         for(let y=0;y<height;y++){
             if(live_array[x][y] == 1){
-                inkybit.setPixel(x,y,inkybit.Color.Black)
+                inkybit.drawRectangle(x*2,y*2,2,2,inkybit.Color.Black)
             }
         }
     }
     inkybit.show()
-    basic.pause(200)
+    basic.pause(30000)
 })
