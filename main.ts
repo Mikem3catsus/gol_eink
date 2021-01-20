@@ -16,7 +16,7 @@ for (let index = 0; index < width; index++) {
     next_array[index] = column2
 }
 
-// build a flyer
+// build a flipper
 live_array[2][2]=1
 live_array[2][1]=1
 live_array[2][3]=1
@@ -47,11 +47,6 @@ basic.forever(function () {
             } else {
                 next_array[x][y] = 0
             }
-            if(neighbor_count==2){
-                if (live_array[x][y] == 1){
-                    next_array[x][y] = 1
-                }
-            }
         }
     }
     for(let x=0;x<width;x++){
@@ -69,4 +64,15 @@ basic.forever(function () {
             }
         }
     }
+    // display on eink
+    inkybit.clear()
+    for(let x=0;x<width;x++){
+        for(let y=0;y<height;y++){
+            if(live_array[x][y] == 1){
+                inkybit.setPixel(x,y)
+            }
+        }
+    }
+    inkybit.show()
+    basic.pause(200)
 })
