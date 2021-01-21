@@ -1,7 +1,7 @@
 function CopyNextArrayToLiveArray () {
-    for (let x3 = 0; x3 <= width - 1; x3++) {
-        for (let y3 = 0; y3 <= height - 1; y3++) {
-            live_array[x3][y3] = next_array[x3][y3]
+    for (let copy_x = 0; copy_x <= width - 1; copy_x++) {
+        for (let copy_y = 0; copy_y <= height - 1; copy_y++) {
+            live_array[copy_x][copy_y] = next_array[copy_x][copy_y]
         }
     }
 }
@@ -40,7 +40,6 @@ function UpdateLEDs () {
         }
     }
 }
-
 function CreateFlyer (flyer_x: number, flyer_y: number) {
     live_array[flyer_x][flyer_y + 1] = 1
     live_array[flyer_x + 1][flyer_y + 2] = 1
@@ -48,7 +47,19 @@ function CreateFlyer (flyer_x: number, flyer_y: number) {
     live_array[flyer_x + 2][flyer_y + 1] = 1
     live_array[flyer_x + 2][flyer_y] = 1
 }
-
+function InitArrays () {
+    // build out the 2d arrays that represent the "frame" or "grid"
+    for (let init_x = 0; init_x <= width - 1; init_x++) {
+        let new_next_column: number[] = []
+        let new_live_column: number[] = []
+        for (let init_y = 0; init_y <= height - 1; init_y++) {
+            new_live_column[init_y] = 0
+            new_next_column[init_y] = 0
+        }
+        live_array[init_x] = new_live_column
+        next_array[init_x] = new_next_column
+    }
+}
 function ComputeNextArray () {
     for (let x2 = 0; x2 <= width - 1; x2++) {
         for (let y2 = 0; y2 <= height - 1; y2++) {
@@ -89,17 +100,7 @@ let width = 0
 // 2. The individual pixels are so small it doesn't look good anyway.
 width = 250 / 2
 height = 122 / 2
-// build out the 2d arrays that represent the "frame" or "grid"
-for (let index = 0; index <= width - 1; index++) {
-    let column2: number[] = []
-    let column: number[] = []
-    for (let index2 = 0; index2 <= height - 1; index2++) {
-        column[index2] = 0
-        column2[index2] = 0
-    }
-    live_array[index] = column
-    next_array[index] = column2
-}
+InitArrays()
 CreateFlipper(1, 1)
 CreateFlyer(10, 10)
 basic.forever(function () {
