@@ -3,6 +3,8 @@
 
 This implements a simple [Game Of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) running on a [micro:bit v2](https://microbit.org/) with an attached [inky:bit](https://shop.pimoroni.com/products/inky-bit) from [Pimoroni](https://shop.pimoroni.com/). Check out a [short video](https://youtu.be/Hl8IsXOjNeg) as well.
 
+When running press the A button to randomize the "world".
+
 ## Use as Extension
 
 This repository can be added as an **extension** in MakeCode.
