@@ -113,3 +113,16 @@ basic.forever(function () {
     // seemed about right.
     basic.pause(30000)
 })
+
+function CreateRandomWorld () {
+    for(let random_x=0;random_x<width;random_x++){
+        for(let random_y=0;random_y<height;random_y++){
+            live_array[random_x][random_y] = randint(0, 1)
+        }
+    }
+    UpdateLEDs()
+}
+
+input.onButtonPressed(Button.A, function () {
+    CreateRandomWorld()
+})
